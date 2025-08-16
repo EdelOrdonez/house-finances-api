@@ -19,6 +19,17 @@ Rails.application.routes.draw do
       
       # Dashboard route
       get 'dashboard', to: 'dashboard#index'
+      
+      # Financial Groups routes
+      resources :financial_groups do
+        member do
+          post :add_user
+          delete :remove_user
+        end
+      end
+      
+      # Strategies routes
+      resources :strategies, only: [:index, :show]
     end
   end
   
